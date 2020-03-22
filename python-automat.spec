@@ -25,6 +25,8 @@ BuildRequires:	python-setuptools_scm
 BuildRequires:	python-attrs >= 19.2.0
 BuildRequires:	python-pytest
 BuildRequires:	python-six
+# it renames xml module to _xmlplus, breaking test_discover.py:WrapFQPNTests.test_singlePackage if Twisted is installed
+BuildConflicts:	python-PyXML
 %endif
 %endif
 %if %{with python3}
