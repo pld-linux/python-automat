@@ -23,8 +23,10 @@ BuildRequires:	python-setuptools
 BuildRequires:	python-setuptools_scm
 %if %{with tests}
 BuildRequires:	python-attrs >= 19.2.0
+BuildRequires:	python-graphviz >= 0.5.2
 BuildRequires:	python-pytest
 BuildRequires:	python-six
+BuildRequires:	python-twisted >= 16.1.1
 # it renames xml module to _xmlplus, breaking test_discover.py:WrapFQPNTests.test_singlePackage if Twisted is installed
 BuildConflicts:	python-PyXML
 %endif
@@ -36,14 +38,16 @@ BuildRequires:	python3-setuptools
 BuildRequires:	python3-setuptools_scm
 %if %{with tests}
 BuildRequires:	python3-attrs >= 19.2.0
+BuildRequires:	python3-graphviz >= 0.5.2
 BuildRequires:	python3-pytest
 BuildRequires:	python3-six
+BuildRequires:	python3-twisted >= 16.1.1
 %endif
 %endif
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
 %if %{with doc}
-BuildRequires:	sphinx-pdg
+BuildRequires:	sphinx-pdg-3
 %endif
 Requires:	python-modules >= 1:2.7
 BuildArch:	noarch
@@ -94,6 +98,7 @@ Dokumentacja API modułu Pythona automat.
 %py_build
 
 %if %{with tests}
+PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
 %{__python} -m pytest automat/_test
 %endif
 %endif
@@ -102,13 +107,15 @@ Dokumentacja API modułu Pythona automat.
 %py3_build
 
 %if %{with tests}
+PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 \
 %{__python3} -m pytest automat/_test
 %endif
 %endif
 
 %if %{with doc}
 PYTHONPATH=$(pwd) \
-%{__make} -C docs html
+%{__make} -C docs html \
+	SPHINXBUILD=sphinx-build-3
 %endif
 
 %install
