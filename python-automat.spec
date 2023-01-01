@@ -8,6 +8,7 @@
 Summary:	Self-service finite-state machines for the programmer on the go
 Summary(pl.UTF-8):	Bezobsługowe automaty skończone dla programisty w biegu
 Name:		python-automat
+# note: despite classifiers, 22.10.0 is not compatible with python 2.7 (uses inspect.getfullargspec), so keep 20.x here
 Version:	20.2.0
 Release:	5
 License:	MIT
