@@ -3,14 +3,14 @@
 %bcond_without	doc	# Sphinx documentation
 %bcond_without	tests	# unit tests
 %bcond_without	python2 # CPython 2.x module
-%bcond_without	python3 # CPython 3.x module
+%bcond_with	python3 # CPython 3.x module
 
 Summary:	Self-service finite-state machines for the programmer on the go
 Summary(pl.UTF-8):	Bezobsługowe automaty skończone dla programisty w biegu
 Name:		python-automat
 # note: despite classifiers, 22.10.0 is not compatible with python 2.7 (uses inspect.getfullargspec), so keep 20.x here
 Version:	20.2.0
-Release:	7
+Release:	8
 License:	MIT
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/automat/
